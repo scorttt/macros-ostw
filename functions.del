@@ -24,6 +24,31 @@ void StopAllMomentum(Player p = player)
     ApplyImpulse(p, Backward(), 0.0001);
 }
 
+String IntToHex(Number input)
+{
+    String output = "";
+    String hexChars = "0123456789ABCDEF";
+
+    while (input > 0)
+    {
+        output = hexChars.Slice(input % 16, 1) + output;
+        input = Floor(input / 16);
+    }
+
+    return output;
+}
+
+Number HexToInt(String input) // shamelessly stolen
+{
+    String hexChars = "0123456789ABCDEF";
+    Number output;
+
+    for (Number i = 0; i < input.Length; i++)
+        output += IndexOfStringChar(hexChars, CharInString(input, StringLength(input) - i - 1)) * 16 ^ i;
+
+    return output;
+}
+
 void ServerLoadHUD(in Player p)
 {  
     CreateHudText(p, null, 
