@@ -2,8 +2,8 @@ import "main.del";
 
 // math related shorthand equations
 Number          NormalizedRange(Number value, Number min, Number max):                               (value - min) / (max - min); // convert a non 0-1 ranged value to 0-1
-Number          Deg2Rad():                                                                           0.01745329251944444444; // (3.1415926535 * 2) / 360
-Number          Rad2Deg():                                                                           57.2957795130823208768; // 360 / (3.1415926535 * 2);
+Number          Deg2Rad(Number deg = 360):                                                           (3.1415926535 * 2) / deg;
+Number          Rad2Deg(Number rad = 360):                                                           rad / (3.1415926535 * 2);
 Number          Quotient(Number n, Number d):                                                        Floor(n / d);
 Number          Exp(Number x):                                                                       2.718281828459045^x;
 Number          LogBase(Number base, Number x):                                                      ((x^(0.0001) - 1) / (base^(0.0001) - 1));
@@ -17,6 +17,7 @@ Boolean         IsInRange(Number n, Number min, Number max):                    
 Boolean         AlmostEqual(Number | Vector a, Number | Vector b, Number tolerance = 0.01):          Abs(a - b) <= tolerance;
 Number          PingPong(Number speed, Number | Vector max = 1.0):                                   (Near(max / 2) + 1) + (Near(max / 2)) * CosDeg(Time() * speed);
 Number          Oscillate(Number speed, Number | Vector min = 0, Number | Vector max = 1.0):         min + PingPong(speed, max - min); // like ping pong, but with a min value
+Number          Percentage(Number number, Number percentage):                                        number * percentage / 100;
 
 # Returns a player's facing direction vector with weapon-spread-like displacement added.
 # - `Player`: The player whose facing direction to spread from.
