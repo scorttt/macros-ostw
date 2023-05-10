@@ -1,0 +1,8 @@
+import "main.del";
+
+// colors
+Color           RainbowCycle(Number speed = 100):                                    CustomColor(128 + 127 * CosDeg(Time() * speed),
+                                                                                      128 + 127 * CosDeg((Time() * speed) + 120),
+                                                                                      128 + 127 * CosDeg((Time() * speed) + 240), 
+                                                                                      250);
+Color           ColorPulse(Number r, Number g, Number b, Number speed, Number max):  CustomColor(PingPong(speed, r + max) + r, PingPong(speed, g + max) + g, PingPong(speed, b + max) + b, 255);

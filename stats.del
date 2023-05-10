@@ -1,0 +1,18 @@
+import "main.del";
+
+// stats
+Number          Kills(Player p = player):                                                            PlayerStat(p, PlayerStat.FinalBlows);
+Number          Deaths(Player p = player):                                                           PlayerStat(p, PlayerStat.Deaths);
+Number          DamageDealt(Player p = player):                                                      Near(PlayerStat(p, PlayerStat.AllDamageDealt));
+Number          DamageTaken(Player p = player):                                                      Near(PlayerStat(p, PlayerStat.DamageTaken));
+Number          Accuracy(Player p = player):                                                         Near(PlayerHeroStat(p, HeroOf(p), PlayerHeroStat.WeaponAccuracy) * 100);
+Number          CritAccuracy(Player p = player):                                                     Near(PlayerHeroStat(p, HeroOf(p), PlayerHeroStat.CriticalHitAccuracy) * 100);
+Number          ScopedAccuracy(Player p = player):                                                   Near(PlayerHeroStat(p, HeroOf(p), PlayerHeroStat.ScopedAccuracy) * 100);
+Number          ScopedCritAccuracy(Player p = player):                                               Near(PlayerHeroStat(p, HeroOf(p), PlayerHeroStat.ScopedCriticalHitAccuracy) * 100);
+Number          HealingDealt(Player p = player):                                                     Near(PlayerHeroStat(p, HeroOf(p), PlayerHeroStat.HealingDealt));
+Number          HealingTaken(Player p = player):                                                     Near(PlayerHeroStat(p, HeroOf(p), PlayerHeroStat.HealingReceived));
+Number          SelfHealing(Player p = player):                                                      Near(PlayerHeroStat(p, HeroOf(p), PlayerHeroStat.SelfHealing));
+Number          EnvironmentalKills(Player p = player):                                               PlayerHeroStat(p, HeroOf(p), PlayerHeroStat.EnvironmentalKills);
+Number          UltsUsed(Player p = player):                                                         PlayerStat(p, PlayerStat.UltimatesUsed);
+Number          UltsEarned(Player p = player):                                                       PlayerStat(p, PlayerStat.UltimatesEarned);
+Number          DamageBlocked(Player p = player):                                                    PlayerStat(p, PlayerStat.DamageBlocked);

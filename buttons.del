@@ -1,0 +1,41 @@
+import "main.del";
+
+// buttons
+Boolean         IsAbility1Held(Player p = player):                                                   IsButtonHeld(p, Button.Ability1);
+Boolean         IsAbility2Held(Player p = player):                                                   IsButtonHeld(p, Button.Ability2);
+Boolean         IsCrouchHeld(Player p = player):                                                     IsButtonHeld(p, Button.Crouch);
+Boolean         IsInteractHeld(Player p = player):                                                   IsButtonHeld(p, Button.Interact);
+Boolean         IsJumpHeld(Player p = player):                                                       IsButtonHeld(p, Button.Jump);
+Boolean         IsMeleeHeld(Player p = player):                                                      IsButtonHeld(p, Button.Melee);
+Boolean         IsPrimaryHeld(Player p = player):                                                    IsButtonHeld(p, Button.PrimaryFire);
+Boolean         IsReloadHeld(Player p = player):                                                     IsButtonHeld(p, Button.Reload);
+Boolean         IsSecondaryHeld(Player p = player):                                                  IsButtonHeld(p, Button.SecondaryFire);
+Boolean         IsUltimateHeld(Player p = player):                                                   IsButtonHeld(p, Button.Ultimate);
+
+void DisallowAllButtons(Player | Player[] p = player)
+{
+    DisallowButton(p, Button.PrimaryFire);
+    DisallowButton(p, Button.SecondaryFire);
+    DisallowButton(p, Button.Ability1);
+    DisallowButton(p, Button.Ability2);
+    DisallowButton(p, Button.Ultimate);
+    DisallowButton(p, Button.Interact);
+    DisallowButton(p, Button.Jump);
+    DisallowButton(p, Button.Melee);
+    DisallowButton(p, Button.Reload);
+    DisallowButton(p, Button.Crouch);
+}
+
+void AllowAllButtons(Player | Player[] p = player)
+{
+    AllowButton(p, Button.PrimaryFire);
+    AllowButton(p, Button.SecondaryFire);
+    AllowButton(p, Button.Ability1);
+    AllowButton(p, Button.Ability2);
+    AllowButton(p, Button.Ultimate);
+    AllowButton(p, Button.Interact);
+    AllowButton(p, Button.Jump);
+    AllowButton(p, Button.Melee);
+    AllowButton(p, Button.Reload);
+    AllowButton(p, Button.Crouch);
+}

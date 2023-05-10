@@ -1,0 +1,5 @@
+import "main.del";
+
+// strings
+String          AltFont(Any s):                                                                              $" {s} ";
+String          DuoStringReplace(String string, String pattern1, String pattern2, String rep1, String rep2): StringReplace(StringReplace(string, pattern1, rep1), pattern2, rep2);

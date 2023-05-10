@@ -1,0 +1,61 @@
+import "main.del";
+
+// misc functions that doesnt fit into any specific category
+
+// alternative ChaseVariableOverTime() as a workaround for not being able to chase index variables
+void AddOverTime(ref Number value, in Number duration, in Number min, in Number max, in Number tickDur) 
+{
+    value = Clamp(value + (min + max) / duration * tickDur, min, max);
+}
+
+// there is definitely a better way to do this. good thing i dont care
+void SubtractOverTime(ref Number value, in Number duration, in Number min, in Number max, in Number tickDur) 
+{
+    value = Clamp(value + (min - max) / duration * tickDur, min, max); 
+}
+
+void StopAllMomentum(Player p = player)
+{
+    ApplyImpulse(p, Up(),       0.0001);
+    ApplyImpulse(p, Left(),     0.0001);
+    ApplyImpulse(p, Down(),     0.0001);
+    ApplyImpulse(p, Right(),    0.0001);
+    ApplyImpulse(p, Forward(),  0.0001);
+    ApplyImpulse(p, Backward(), 0.0001);
+}
+
+void ServerLoadHUD(in Player p)
+{  
+    CreateHudText(p, null, 
+        $"C: {Near(ServerLoad())}%, A: {Near(ServerLoadAverage())}%, P: {Near(ServerLoadPeak())}%, E: {EntityCount()}, T: {TextCount()}",
+        null, Location.Right, 0.2); 
+}
+
+void DebugInfo(in Player p) 
+{
+    ServerLoadHUD(p);
+
+    CreateHudText(p, null, 
+        $"POS: {PosOf(p)}", 
+        null, Location.Right, 0.3);
+
+    CreateHudText(p, null, 
+        $"FAC: {Facing(p)}",
+        null, Location.Right, 0.4);
+
+    CreateHudText(p, null, 
+        $"FANG: ({HorizontalFacingAngleOf(p)}, {VerticalFacingAngleOf(p)})",
+        null, Location.Right, 0.5);
+
+    CreateHudText(p, null, 
+        $"RC: {RayHit(EyePos(p), EyePos(p) + Facing(p) * 1000, AllLiving(), p)}", 
+        null, Location.Right, 0.6);
+
+    CreateHudText(p, null, 
+        $"RCN: {RayNormal(EyePos(p), EyePos(p) + Facing(p) * 1000, AllLiving(), p)}", 
+        null, Location.Right, 0.7);
+
+    CreateHudText(p, null, 
+        $"SPD: {SpeedOf(p)}, HSPD: {HorizontalSpeedOf(p)}, VSPD: {VerticalSpeedOf(p)}",
+        null, Location.Right, 0.8);
+}
