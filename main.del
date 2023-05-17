@@ -5,6 +5,7 @@ import "stats.del";
 import "colors.del";
 import "strings.del";
 import "functions.del";
+import "vectors.del";
 
 // aliases (currently doesnt work with OSTW)
 type bool = Boolean;

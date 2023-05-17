@@ -1,0 +1,6 @@
+import "main.del";
+
+// vector related functions
+
+# Reflection direction vector of provided directional vector and normal vector 
+Vector Reflection(Vector direction, Vector normal):                                                          direction - 2 * (Dot(direction, Norm(normal))) * Norm(normal);
