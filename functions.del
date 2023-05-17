@@ -2,6 +2,9 @@ import "main.del";
 
 // misc functions that doesnt fit into any specific category
 
+Number          PingPong(Number speed, Number | Vector max = 1.0):                                           (Near(max / 2) + 1) + (Near(max / 2)) * CosDeg(Time() * speed);
+Number          Oscillate(Number speed, Number | Vector min = 0, Number | Vector max = 1.0):                 min + PingPong(speed, max - min); // like ping pong, but with a min value
+
 // alternative ChaseVariableOverTime() as a workaround for not being able to chase index variables
 void AddOverTime(ref Number value, in Number duration, in Number min, in Number max, in Number tickDur) 
 {
