@@ -31,6 +31,7 @@ Player          RayPlayer(Player | Vector start, Player | Vector end, Player | P
                 RayCastHitPlayer(start, end, inclPlayers, exclPlayers, true);
 Number          Dot(Player | Vector n1, Player | Vector n2):                                         DotProduct(n1, n2);
 Vector          Cross(Player | Vector n1, Player | Vector n2):                                       CrossProduct(n1, n2);
+Vector          Norm(Vector | Player v):                                                             Normalize(v);
 Number          CosDeg(Number angle):                                                                CosineFromDegrees(angle);
 Number          CosRad(Number angle):                                                                CosineFromRadians(angle);
 Number          SinDeg(Number angle):                                                                SineFromDegrees(angle);
