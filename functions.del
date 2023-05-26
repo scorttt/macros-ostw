@@ -47,7 +47,7 @@ Number HexToInt(String input) // shamelessly stolen
     Number output;
 
     for (Number i = 0; i < input.Length; i++)
-        output += IndexOfStringChar(hexChars, CharInString(input, StringLength(input) - i - 1)) * 16 ^ i;
+        output += IndexOfStringChar(hexChars, CharInString(input, StringLength(input) - i - 1)) * 16 ^i;
 
     return output;
 }
