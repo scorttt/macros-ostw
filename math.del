@@ -18,14 +18,3 @@ Boolean         IsOdd(Number n):                                                
 Boolean         IsInRange(Number n, Number min, Number max):                                         (n >= min && n <= max);
 Boolean         AlmostEqual(Number | Vector a, Number | Vector b, Number tolerance = 0.01):          Abs(a - b) <= tolerance;
 Number          Percentage(Number number, Number percentage):                                        number * percentage / 100;
-
-# Returns a player's facing direction vector with weapon-spread-like displacement added.
-# - `Player`: The player whose facing direction to spread from.
-# - `Distance`: The spread radius in degrees.
-# - `Angle`: The rotation angle for the spread in degrees (starting from the right going counterclockwise)
-Vector SpreadAngleDirection(Player Player = player, Number Distance, Number Angle): 
-    Facing(Player) * CosDeg(Distance) +
-    SinDeg(Distance) * (
-        WorldVectorOf(Right(), Player, LocalVector.Rotation) * CosDeg(Angle) + 
-        Cross(Facing(Player), WorldVectorOf(Left(), Player, LocalVector.Rotation)) * SinDeg(Angle)
-    );
