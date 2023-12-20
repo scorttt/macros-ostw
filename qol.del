@@ -1,0 +1,46 @@
+import "main.del";
+
+// shorthand macros of existing functions
+Player          player:                                                                              EventPlayer();
+Player          local:                                                                               LocalPlayer();
+Player          host:                                                                                HostPlayer();
+Player[]        All():                                                                               AllPlayers();
+Player[]        AllLiving():                                                                         AllLivingPlayers();
+Player[]        EnemyPlayers(Player p = player):                                                     AllPlayers(OppositeTeamOf(TeamOf(p)));
+Player[]        AllyPlayers(Player p = player):                                                      AllPlayers(TeamOf(p));
+Vector          Facing(Player p = player):                                                           FacingDirectionOf(p);
+Vector          EyePos(Player p = player):                                                           EyePosition(p);
+Vector          PosOf(Player p = player):                                                            PositionOf(p);
+Vector          NearestWalkablePos(Player | Vector p):                                               NearestWalkablePosition(p);
+Number          Time():                                                                              TotalTimeElapsed();
+void            WaitIfTrue(in Number time) {                                                         Wait(time, WaitBehavior.AbortWhenFalse); }
+void            MinWaitIfTrue() {                                                                    Wait(0.016, WaitBehavior.AbortWhenFalse); }
+Boolean         IsHero(in Hero Hero, Player p = player):                                             (HeroOf(p) == Hero) || (HeroBeingDuplicated(p) == Hero);
+Boolean         IsMap(in Map Map):                                                                   CurrentMap() == Map;
+Boolean         IsHostSpectating():                                                                  !All().Contains(host);
+Boolean         IsVector(Any v):                                                                     (v - v != null); // true for vectors, false for numbers
+Boolean         EventWasWorkshop():                                                                  EventAbility() == null; // true for any workshop damage (CreateProjectile(), Damage(), Kill(), etc)
+Any             Curr():                                                                              ArrayElement();
+Any             Update(Any v):                                                                       UpdateEveryFrame(v);
+Any             Once(Any v):                                                                         EvaluateOnce(v);
+String          BindString(Button b):                                                                InputBindingString(b);
+Vector          RayHit(Player | Vector start, Player | Vector end, Player | Player[] inclPlayers = AllLiving(), Player | Player[] exclPlayers = player):
+                RayCastHitPosition(start, end, inclPlayers, exclPlayers, true);
+Vector          RayNormal(Player | Vector start, Player | Vector end, Player | Player[] inclPlayers = AllLiving(), Player | Player[] exclPlayers = player):
+                RayCastHitNormal(start, end, inclPlayers, exclPlayers, true);
+Player          RayPlayer(Player | Vector start, Player | Vector end, Player | Player[] inclPlayers = AllLiving(), Player | Player[] exclPlayers = player):
+                RayCastHitPlayer(start, end, inclPlayers, exclPlayers, true);
+Number          Dot(Player | Vector n1, Player | Vector n2):                                         DotProduct(n1, n2);
+Vector          Cross(Player | Vector n1, Player | Vector n2):                                       CrossProduct(n1, n2);
+Vector          Norm(Vector | Player v):                                                             Normalize(v);
+Number          CosDeg(Number angle):                                                                CosineFromDegrees(angle);
+Number          CosRad(Number angle):                                                                CosineFromRadians(angle);
+Number          SinDeg(Number angle):                                                                SineFromDegrees(angle);
+Number          SinRad(Number angle):                                                                SineFromRadians(angle);
+Number          Abs(Number n):                                                                       AbsoluteValue(n);
+Number          Sqrt(Number n):                                                                      SquareRoot(n);
+Number          Mag(Vector v):                                                                       MagnitudeOf(v);
+Number          Floor(Number float):                                                                 RoundToInteger(float, Rounding.Down);
+Number          Ceil(Number float):                                                                  RoundToInteger(float, Rounding.Up);
+Number          Near(Number float):                                                                  RoundToInteger(float, Rounding.Nearest);
+Number | Vector Lerp(Number | Vector v1, Number | Vector v2, Number fraction):                       LinearInterpolate(v1, v2, fraction);

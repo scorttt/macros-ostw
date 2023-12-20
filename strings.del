@@ -1,0 +1,15 @@
+import "main.del";
+
+// strings
+String          AltFont(Any s):                                                                              $" {s} ";
+String          DuoStringReplace(String string, String pattern1, String pattern2, String rep1, String rep2): StringReplace(StringReplace(string, pattern1, rep1), pattern2, rep2);
+
+# Returns a list of array indicies to a string.
+# - Up to a maximum of 15 indices
+String          ArrayToString(in Any[] arr) 
+{
+    Number textLength: StringLength(SortedArray(arr.Map(e => $"{e}"), -StringLength(Curr()))[0]);
+
+    return $"{arr[0]}\n{arr[1]}\n{arr[2]}\n{arr[3]}\n{arr[4]}\n{arr[5]}\n{arr[6]}\n{arr[7]}\n{arr[8]}\n{arr[9]}\n{arr[10]}\n{arr[11]}\n{arr[12]}\n{arr[13]}\n{arr[14]}\n"
+    .Slice(0, (textLength + 2) * arr.Length);
+}

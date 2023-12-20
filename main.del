@@ -1,0 +1,20 @@
+import "qol.del";
+import "math.del";
+import "buttons.del";
+import "stats.del";
+import "colors.del";
+import "strings.del";
+import "functions.del";
+import "vectors.del";
+
+// aliases (currently doesnt work with OSTW)
+type bool = Boolean;
+type map = Map;
+type hero = Hero;
+type num = Number;
+type vec = Vector;
+type any = Any;
+type player = Player;
+type color = Color;
+type str = String;
+type button = Button;

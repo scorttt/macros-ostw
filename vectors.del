@@ -1,0 +1,17 @@
+import "main.del";
+
+// vector related functions
+
+# Reflection direction vector of provided directional vector and normal vector 
+Vector Reflection(Vector direction, Vector normal):                                                          direction - 2 * (Dot(direction, Norm(normal))) * Norm(normal);
+
+# Returns a player's facing direction vector with weapon-spread-like displacement added.
+# - `Player`: The player whose facing direction to spread from.
+# - `Distance`: The spread radius in degrees.
+# - `Angle`: The rotation angle for the spread in degrees (starting from the right going counterclockwise)
+Vector SpreadAngleDirection(Player Player = player, Number Distance, Number Angle): 
+    Facing(Player) * CosDeg(Distance) +
+    SinDeg(Distance) * (
+        WorldVectorOf(Right(), Player, LocalVector.Rotation) * CosDeg(Angle) + 
+        Cross(Facing(Player), WorldVectorOf(Left(), Player, LocalVector.Rotation)) * SinDeg(Angle)
+    );

@@ -1,0 +1,20 @@
+import "main.del";
+
+// math related shorthand equations
+Number          Pi:                                                                                  3.14159265358979323846;
+Number          E:                                                                                   2.71828182845904523536;
+Number          NormalizedRange(Number value, Number min, Number max):                               (value - min) / (max - min); // convert a non 0-1 ranged value to 0-1
+Number          Deg2Rad(Number deg = 360):                                                           (3.1415926535 * 2) / deg;
+Number          Rad2Deg(Number rad = 360):                                                           rad / (3.1415926535 * 2);
+Number          Quotient(Number n, Number d):                                                        Floor(n / d);
+Number          Exp(Number x):                                                                       E^x;
+Number          LogBase(Number base, Number x):                                                      ((x^(0.0001) - 1) / (base^(0.0001) - 1));
+Number          Log(Number x):                                                                       (10000 * (x^(0.0001) - 1));
+Number          LogLoPrec(Number x):                                                                 (1000 * (x^(0.001) - 1));
+Number          LogHiPrec(Number x):                                                                 (Log(x) - (1 - Exp((-Log(x))) * x));
+Number          Clamp(Number n, Number min, Number max):                                             Max(min, Min(n, max));
+Boolean         IsEven(Number n):                                                                    n % 2 == 0;
+Boolean         IsOdd(Number n):                                                                     n % 2 != 0; // could just do !IsEven() but this is to save one (1) element
+Boolean         IsInRange(Number n, Number min, Number max):                                         (n >= min && n <= max);
+Boolean         AlmostEqual(Number | Vector a, Number | Vector b, Number tolerance = 0.01):          Abs(a - b) <= tolerance;
+Number          Percentage(Number number, Number percentage):                                        number * percentage / 100;
